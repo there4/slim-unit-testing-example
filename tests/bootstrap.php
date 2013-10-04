@@ -17,14 +17,16 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 class Slim_Framework_TestCase extends PHPUnit_Framework_TestCase {
 
-    // Initialize out own copy of the slim application
+    // Initialize our own copy of the slim application
     public function setup() {
         $app = new \Slim\Slim(array(
-            'version'     => '0.0.0',
-            'debug'       => false
+            'version' => '0.0.0',
+            'debug'   => false
         ));
 
         require __DIR__ . '/../app/app.php';
+
+        // Establish a local reference to the Slim app object
         $this->app = $app;
     }
 

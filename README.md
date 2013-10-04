@@ -11,20 +11,30 @@ testing with Slim, and have developed my own approach. I've refactored and
 introduced it into this sample application. I hope it will help others on their
 path to using this great framework.
 
-# Installation
+## Installation
 
 Run `composer install` and then `phpunit`. This application assumes that you
 have `phpunit` installed globally on your system. This application can be
 installed to run as a functioning website, use the sample config files in the
 `build/` folder for this.
 
-# Concepts
+## Concepts
 
-# Unit Testing vs. Integration Testing
+## Unit Testing vs. Integration Testing
 
-# Developing New Tests
+Unit tests should test an individual part of code. The system under tests should
+be as small as possible. You would unit test an individual method. Integration
+testing exercises an entire system. Most of this example is about integration
+testing. We are running tests that work Slim from initial instantiation to the
+final delivery of data. With integration tests, we're treating the entire
+application as a unit, setting up a particular initial environment and then
+executing the `run()` command.
 
-# Thanks
+## Mocking with SlimPHP
+
+## Developing New Tests
+
+## Thanks
 
 Thanks must be given to [Nicholas Humfrey][njh] for his work in this
 [integration testing harness][njh_test].

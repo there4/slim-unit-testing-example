@@ -21,7 +21,8 @@ class Slim_Framework_TestCase extends PHPUnit_Framework_TestCase {
     public function setup() {
         $app = new \Slim\Slim(array(
             'version' => '0.0.0',
-            'debug'   => false
+            'debug'   => false,
+            'mode'    => 'testing'
         ));
 
         require __DIR__ . '/../app/app.php';
@@ -40,7 +41,7 @@ class Slim_Framework_TestCase extends PHPUnit_Framework_TestCase {
         \Slim\Environment::mock(array_merge(array(
             'REQUEST_METHOD' => $method,
             'PATH_INFO'      => $path,
-            'SERVER_NAME'    => 'development.local',
+            'SERVER_NAME'    => 'local.dev',
         ), $options));
 
         // Establish some useful references to the slim app properties

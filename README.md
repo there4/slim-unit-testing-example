@@ -15,8 +15,8 @@ path to using this great framework.
 
 Run `composer install` and then `phpunit`. This application assumes that you
 have `phpunit` installed globally on your system. This application can be
-installed to run as a functioning website, use the sample config files in the
-`build/` folder for this.
+installed to run as a functioning website, use the sample apache config file in
+the `build/` folder for this.
 
 ## Concepts
 

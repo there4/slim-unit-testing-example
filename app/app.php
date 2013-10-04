@@ -14,6 +14,7 @@ $app->curl = function ($c) use ($app) {
     return new \Curl();
 };
 
+
 // Error Handler for any uncaught exception
 // -----------------------------------------------------------------------------
 // This can be silenced by turning on Slim Debugging. All exceptions thrown by

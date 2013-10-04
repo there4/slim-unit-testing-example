@@ -1,0 +1,15 @@
+<VirtualHost *:80>
+    ServerAdmin me@mysite.com
+    DocumentRoot "/path/www.mysite.com/public"
+    ServerName mysite.com
+    ServerAlias www.mysite.com
+
+    #ErrorLog "logs/mysite.com-error.log"
+    #CustomLog "logs/mysite.com-access.log" combined
+
+    <Directory "/path/www.mysite.com/public">
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>

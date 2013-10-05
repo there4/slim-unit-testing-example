@@ -10,9 +10,8 @@
             "role": "Developer"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
-        "slim/slim": "2.*",
+        "slim/slim": "2.3.*",
         "shuber/curl": "dev-master"
     }
 }

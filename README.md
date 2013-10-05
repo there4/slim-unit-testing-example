@@ -11,6 +11,18 @@ testing with Slim, and have developed my own approach. I've refactored and
 introduced it into this sample application. I hope it will help others on their
 path to using this great framework.
 
+## Example
+
+```php
+    class VersionTest extends Slim_Framework_TestCase {
+        public function testVersion() {
+            $this->get('/version');
+            $this->assertEquals(200, $this->response->status());
+            $this->assertEquals($this->app->config('version'), $this->response->body());
+        }
+    }
+```
+
 ## Installation
 
 Run `composer install` and then `phpunit`. This application assumes that you
@@ -22,7 +34,22 @@ to [http://localhost:8080][lh]
 
 ## Concepts
 
+The `build/index.php` file serves as the application entry point. This file
+initializes a SlimPHP `$app` with production configuration, includes the routes
+file from `app/app.php` and then runs the app with `$app->run();`. This allows
+us to keep our application separate from the index, and gives us an opportunity
+to include our app file in a different context.
 
+When phpunit runs, it looks for the phpunit.xml file in our root. This file
+specifies a testing bootstrap file. PHPUnit includes `testing/bootstrap.php`.
+This file creates an `$app`, just like in `build/index.php`, but it uses
+testing configuration. The bootstrap keeps a reference to `$app` for the testing
+framework, and then provides several helper methods for `GET`, `POSY`, `PUT`,
+`PATCH`, `HEAD`, and `DELETE`.
+
+With these method, you can run end to end tests on SlimPHP routes without need
+for a webserver. The tests run within a mock enviroment, and will be fast and
+efficient. 
 
 ## Unit Testing vs. Integration Testing
 

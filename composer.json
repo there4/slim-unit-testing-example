@@ -13,5 +13,8 @@
     "require": {
         "slim/slim": "2.3.*",
         "shuber/curl": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {"There4": "lib/"}
     }
 }

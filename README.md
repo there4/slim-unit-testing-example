@@ -14,9 +14,11 @@ path to using this great framework.
 ## Installation
 
 Run `composer install` and then `phpunit`. This application assumes that you
-have `phpunit` installed globally on your system. This application can be
-installed to run as a functioning website, use the sample apache config file in
-the `build/` folder for this.
+have `phpunit` installed globally on your system. This application can be run as
+a functioning website. You can you use the sample apache config file in the
+`build/` folder, or use the native php webserver. To use the php webserver, run
+`php -S localhost:8080 -t public/` from the project root and open your browser
+to [http://localhost:8080][lh]
 
 ## Concepts
 
@@ -39,6 +41,7 @@ executing the `run()` command.
 Thanks must be given to [Nicholas Humfrey][njh] for his work in this
 [integration testing harness][njh_test].
 
+[lh]: http://localhost:8080
 [bb]: http://backbonejs.org
 [njh]: https://github.com/njh
 [njh_test]: https://github.com/njh/njh.me/blob/master/test/IntegrationTest.php

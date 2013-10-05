@@ -8,6 +8,7 @@
 //
 // -----------------------------------------------------------------------------
 
+
 // Dependency Injection Containers
 
 $app->curl = function ($c) use ($app) {
@@ -25,11 +26,50 @@ $app->error(function (\Exception $e) use ($app) {
 });
 
 
-// Site Root
+// Token Authentication
+// -----------------------------------------------------------------------------
+// Halt the response if the token is not valid.
+$authenticate = function ($app) {
+    return function () use ($app) {
+        if (true) {
+            return;
+        }
+        $app->halt(401, 'Invalid authentication token');
+    };
+};
+
+// Version Endpoint
 // -----------------------------------------------------------------------------
 // Heartbeat endpoint, should always return 200
 $app->get('/version', function () use ($app) {
     echo $app->config('version');
+});
+
+
+// Fetch a file from the file store.
+// -----------------------------------------------------------------------------
+// Authenticated request for a file from the file store
+$app->get('/files/:filename', $authenticate($app), function ($filename) use ($app)  {
+    $supported_types = (object) array(
+        'json'    => 'application/json',
+        'xml'     => 'application/xml',
+        'csv'     => 'text/csv',
+        'unknown' => 'application/octet-stream'
+    );
+
+    $filename = pathinfo($filename, PATHINFO_BASENAME);
+    $extension = pathinfo($filename, PATHINFO_EXTENSION);
+    $path = __DIR__ . '/../file_store/' . $filename;
+    if (!file_exists($path)) {
+        $app->notFound();
+    }
+    $content_type
+        = property_exists($supported_types, $extension)
+        ? $supported_types->$extension
+        : $supported_types->unknown;
+
+    $app->response->headers->set('Content-Type', $content_type);
+    readfile($path);
 });
 
 

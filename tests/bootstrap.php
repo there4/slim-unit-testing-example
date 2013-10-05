@@ -55,16 +55,26 @@ class Slim_Framework_TestCase extends PHPUnit_Framework_TestCase {
         return ob_get_clean();
     }
 
-    // Shortcut way of accessing a `GET` route
     public function get($path, $options = array()) {
         return $this->request('GET', $path, $options);
     }
 
-    // Shortcut way of accessing a `POST` route, this allows an additional array
-    // of post variables
     public function post($path, $options = array(), $postVars = array()) {
         $options['slim.input'] = http_build_query($postVars);
         return $this->request('POST', $path, $options);
+    }
+
+    public function put($path, $options = array(), $postVars = array()) {
+        $options['slim.input'] = http_build_query($postVars);
+        return $this->request('PUT', $path, $options);
+    }
+
+    public function delete($path, $options = array()) {
+        return $this->request('POST', $path, $options);
+    }
+
+    public function head($path, $options = array()) {
+        return $this->request('HEAD', $path, $options);
     }
 
 }

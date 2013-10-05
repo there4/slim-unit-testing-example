@@ -46,6 +46,18 @@ $app->get('/version', function () use ($app) {
 });
 
 
+// Zen Statement From GitHub
+// -----------------------------------------------------------------------------
+// Can be used to verify that the application has external connectivity.
+$app->get('/zen', function () use ($app) {
+    $response = $app->curl->get('https://api.github.com/zen');
+    if ($response->headers['Status-Code'] != 200) {
+        $app->halt(502, 'GitHub has failed with :' + $response->headers['Status-Code']);
+    }
+    echo $response->body;
+});
+
+
 // Fetch a file from the file store.
 // -----------------------------------------------------------------------------
 // Authenticated request for a file from the file store

@@ -64,6 +64,11 @@ class Slim_Framework_TestCase extends PHPUnit_Framework_TestCase {
         return $this->request('POST', $path, $options);
     }
 
+    public function patch($path, $options = array(), $postVars = array()) {
+        $options['slim.input'] = http_build_query($postVars);
+        return $this->request('PATCH', $path, $options);
+    }
+
     public function put($path, $options = array(), $postVars = array()) {
         $options['slim.input'] = http_build_query($postVars);
         return $this->request('PUT', $path, $options);

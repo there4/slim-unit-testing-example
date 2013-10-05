@@ -22,6 +22,8 @@ to [http://localhost:8080][lh]
 
 ## Concepts
 
+
+
 ## Unit Testing vs. Integration Testing
 
 Unit tests should test an individual part of code. The system under tests should
@@ -34,13 +36,28 @@ executing the `run()` command.
 
 ## Mocking with SlimPHP
 
-## Developing New Tests
+See the [ZenTest][zen_test] for an example of mocking with SlimPHP dependency
+injection. You can read more about mocking in the [SlimDocs on DI][di].
+
+## Ideas and Extensions
+
+I've considered adding custom PHPUnit assertions that mirror the
+[Status Introspection][si] methods of SlimPHP. We could have tools like 
+`$this->assertResponseOK();` or `$this->assertResponseBody('Some content');`.
+I'm not sure that I like these more than the current more verbose matchers, but
+it might be worth exploring.
+
+At the moment, the helpers for `PUT`, `PATCH`, `HEAD`, and `DELETE` are
+untested.
 
 ## Thanks
 
 Thanks must be given to [Nicholas Humfrey][njh] for his work in this
 [integration testing harness][njh_test].
 
+[si]: http://docs.slimframework.com/#Response
+[di]: http://docs.slimframework.com/#Dependency-Injection
+[zen_test]: https://github.com/there4/slim-unit-testing-example/blob/master/tests/integration/ZenTest.php
 [lh]: http://localhost:8080
 [bb]: http://backbonejs.org
 [njh]: https://github.com/njh

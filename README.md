@@ -44,7 +44,7 @@ When phpunit runs, it looks for the phpunit.xml file in our root. This file
 specifies a testing bootstrap file. PHPUnit includes `testing/bootstrap.php`.
 This file creates an `$app`, just like in `build/index.php`, but it uses
 testing configuration. The bootstrap keeps a reference to `$app` for the testing
-framework, and then provides several helper methods for `GET`, `POSY`, `PUT`,
+framework, and then provides several helper methods for `GET`, `POST`, `PUT`,
 `PATCH`, `HEAD`, and `DELETE`.
 
 With these method, you can run end to end tests on SlimPHP routes without need
@@ -53,13 +53,14 @@ efficient.
 
 ## Unit Testing vs. Integration Testing
 
-Unit tests should test an individual part of code. The system under tests should
+Unit tests should test an individual part of code. The system under test should
 be as small as possible. You would unit test an individual method. Integration
 testing exercises an entire system. Most of this example is about integration
 testing. We are running tests that work Slim from initial instantiation to the
 final delivery of data. With integration tests, we're treating the entire
 application as a unit, setting up a particular initial environment and then
-executing the `run()` command.
+executing the `run()` command and finally inspecting the results to ensure that
+they match our expectations
 
 ## Mocking with SlimPHP
 

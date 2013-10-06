@@ -26,7 +26,7 @@ class ZenTest extends Slim_Framework_TestCase {
         $curl->expects($this->any())
             ->method('get')
             ->will($this->returnValue((object) array(
-                'headers' => array('Status-Code' => 502),
+                'headers' => array('Status-Code' => 503),
                 'body'    => ''
             )));
         $this->app->curl = function ($c) use ($curl) {

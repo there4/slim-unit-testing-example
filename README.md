@@ -66,7 +66,18 @@ they match our expectations
 ## Mocking with SlimPHP
 
 See the [ZenTest][zen_test] for an example of mocking with SlimPHP dependency
-injection. You can read more about mocking in the [SlimDocs on DI][di].
+injection. In this test we mock a Curl wrapper class from [Shuber][shuber]. This
+allows us to substitute responses, and run these unit tests that don't have the
+curl extension installed. We're totally isolated from that dependency while this
+test.
+
+The [FileStoreTest][file_test] uses a mock for the authentication
+class. Notice that the file store route doesn't use that class directly, but
+instead we're using the app container to swap out mocked version that allows us
+to determine if the authentication will pass or fail from within our test
+harness.
+
+You can read more about mocking in the [SlimDocs on DI][di].
 
 ## Ideas and Extensions
 
@@ -84,8 +95,10 @@ untested.
 Thanks must be given to [Nicholas Humfrey][njh] for his work in this
 [integration testing harness][njh_test].
 
+[shuber]: https://github.com/shuber/curl
 [si]: http://docs.slimframework.com/#Response
 [di]: http://docs.slimframework.com/#Dependency-Injection
+[file_test]: https://github.com/there4/slim-unit-testing-example/blob/master/tests/integration/FileStoreTest.php
 [zen_test]: https://github.com/there4/slim-unit-testing-example/blob/master/tests/integration/ZenTest.php
 [lh]: http://localhost:8080
 [bb]: http://backbonejs.org

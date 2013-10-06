@@ -1,0 +1,33 @@
+<?php
+
+pake_desc('Run the application with local php server');
+pake_task('server');
+
+pake_desc('Check the code for psr2 standards');
+pake_task('sniff');
+
+pake_desc('Run syntax and unit tests');
+pake_task('test');
+pake_alias('default', 'test');
+
+function run_server()
+{
+    $host = 'localhost:8008';
+    echo pakeColor::colorize('Now serving site from http://' . $host, 'INFO') . "\n";
+    pake_sh('php -S ' . $host . ' -t public', true);
+}
+
+function run_test()
+{
+    echo pakeColor::colorize(' * Unit testing', 'COMMENT') . "\n";
+    pake_sh('phpunit', true);
+}
+
+function run_sniff()
+{
+    echo pakeColor::colorize(' * Checking files for PSR2', 'COMMENT') . "\n";
+    pake_sh("phpcs -p --standard=PSR2 ./public/index.php ./app ./lib");
+}
+
+
+/* End of file pakefile */

@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Slim Unit Testing Example by there4</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Slim Unit Testing Example</h1>
+        <p>Unit Testing SlimPHP - end-to-end testing of SlimPHP routes with PHPUnit. Examples of route testing and mocking with the SlimPHP dependency injection container.</p>
+
+        <p class="view"><a href="https://github.com/there4/slim-unit-testing-example">View the Project on GitHub <small>there4/slim-unit-testing-example</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/there4/slim-unit-testing-example/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/there4/slim-unit-testing-example/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/there4/slim-unit-testing-example">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="slim-unit-testing-example" class="anchor" href="#slim-unit-testing-example"><span class="octicon octicon-link"></span></a>Slim Unit Testing Example</h1>
+
+<p><a href="https://travis-ci.org/there4/slim-unit-testing-example"><img src="https://travis-ci.org/there4/slim-unit-testing-example.png?branch=master" alt="Build Status"></a></p>
+
+<p>SlimPHP is a great framework with a small footprint and everything you need to
+build fast applications. I've found it particularly well suited to delivering
+data to <a href="http://backbonejs.org">BackboneJS</a> applications.</p>
+
+<p>However, I haven't found a great deal of information about integration and unit
+testing with Slim, and have developed my own approach. I've refactored and
+introduced it into this sample application. I hope it will help others on their
+path to using this great framework.</p>
+
+<p>This application demonstrates complete end-to-end unit testing of a SlimPHP
+application and its routes. With this approach, you'll be able to completely
+unit test your application without the need of Curl, webservers, or anything
+other than <a href="http://phpunit.de/manual/current/en/index.html">PHPUnit</a> installed on your system. This makes it easy to
+test your entire app in an automated way with <a href="http://travis-ci.org">TravisCI</a>. Check out the
+<a href="https://github.com/there4/slim-unit-testing-example/blob/master/.travis.yml">.travis.yml</a> file in this project for an example of this.</p>
+
+<h2>
+<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h2>
+
+<p>Here's <a href="https://github.com/there4/slim-unit-testing-example/blob/master/tests/integration/VersionTest.php">a test</a> for a very simple endpoint that returns the version from the
+application config. We're asseting that Slim responded with a <code>200</code> and that
+the version matches what we expect.</p>
+
+<div class="highlight highlight-php"><pre>    <span class="k">class</span> <span class="nc">VersionTest</span> <span class="k">extends</span> <span class="nx">Slim_Framework_TestCase</span> <span class="p">{</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">testVersion</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'/version'</span><span class="p">);</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">response</span><span class="o">-&gt;</span><span class="na">status</span><span class="p">());</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="o">-&gt;</span><span class="na">config</span><span class="p">(</span><span class="s1">'version'</span><span class="p">),</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">response</span><span class="o">-&gt;</span><span class="na">body</span><span class="p">());</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Clone the repository and then run <code>composer install</code> and then <code>phpunit</code>. This
+application assumes that you have <code>phpunit</code> installed globally on your system.
+This application can be run as a functioning website. You can you use the sample
+apache config file in the <code>build/</code> folder, or use the native php webserver. To
+use the php webserver, run <code>php -S localhost:8080 -t public/</code> from the project
+root and open your browser to <a href="http://localhost:8080">http://localhost:8080</a></p>
+
+<h2>
+<a name="concepts" class="anchor" href="#concepts"><span class="octicon octicon-link"></span></a>Concepts</h2>
+
+<p>The <code>build/index.php</code> file serves as the application entry point. This file
+initializes a SlimPHP <code>$app</code> with production configuration, includes the routes
+file from <code>app/app.php</code> and then runs the app with <code>$app-&gt;run();</code>. This allows
+us to keep our application separate from the index, and gives us an opportunity
+to include our <code>app/app.php</code> file in a different context.</p>
+
+<p>When phpunit runs, it looks for the phpunit.xml file in our root. This file
+specifies a testing bootstrap file. PHPUnit includes <code>testing/bootstrap.php</code>.
+This file creates an <code>$app</code>, just like in <code>build/index.php</code>, but it uses
+testing configuration. The bootstrap keeps a reference to <code>$app</code> for the testing
+framework, and then provides several helper methods for <code>GET</code>, <code>POST</code>, <code>PUT</code>,
+<code>PATCH</code>, <code>HEAD</code>, and <code>DELETE</code>.</p>
+
+<p>With these methods, you can run end to end tests on SlimPHP routes without a
+webserver. The tests run entirely within a mock enviroment, and will be fast and
+efficient. </p>
+
+<h2>
+<a name="unit-testing-vs-integration-testing" class="anchor" href="#unit-testing-vs-integration-testing"><span class="octicon octicon-link"></span></a>Unit Testing vs. Integration Testing</h2>
+
+<p>Unit tests should test an individual part of code. The system under test should
+be as small as possible. You would unit test an individual method. Integration
+testing exercises an entire system. Most of this example is about integration
+testing. We are running tests that work Slim from initial instantiation to the
+final delivery of data. With integration tests, we're treating the entire
+application as a unit, setting up a particular initial environment and then
+executing the <code>run()</code> command and finally inspecting the results to ensure that
+they match our expectations.</p>
+
+<h2>
+<a name="mocking-with-slimphp" class="anchor" href="#mocking-with-slimphp"><span class="octicon octicon-link"></span></a>Mocking with SlimPHP</h2>
+
+<p>See the <a href="https://github.com/there4/slim-unit-testing-example/blob/master/tests/integration/ZenTest.php">ZenTest</a> for an example of mocking with SlimPHP dependency
+injection. In this test we mock a Curl wrapper class from <a href="https://github.com/shuber/curl">Shuber</a>. This
+allows us to substitute responses and exercise the parts of our application that
+we feel need testing. It also allows us to run these unit tests on systems that
+don't have the curl extension installed. We're totally isolated from that
+dependency while this running test.</p>
+
+<p>The <a href="https://github.com/there4/slim-unit-testing-example/blob/master/tests/integration/FileStoreTest.php">FileStoreTest</a> uses a mock for the authentication
+class. Notice that the file store route doesn't use that class directly, but
+instead it is used by the application authenticator method. We're using the app
+dependency injection container to swap out the real object for a mock version.
+This approach allows us to control authentication results from within our test
+harness.</p>
+
+<p>You can read more about dependency injection in the <a href="http://docs.slimframework.com/#Dependency-Injection">SlimDocs on DI</a>, and
+more about mock objects in the <a href="http://phpunit.de/manual/3.0/en/mock-objects.html">PHPUnit docs</a>.</p>
+
+<h2>
+<a name="ideas-and-extensions" class="anchor" href="#ideas-and-extensions"><span class="octicon octicon-link"></span></a>Ideas and Extensions</h2>
+
+<p>I've considered adding custom PHPUnit assertions that mirror the
+<a href="http://docs.slimframework.com/#Response">Status Introspection</a> methods of SlimPHP. We could have tools like 
+<code>$this-&gt;assertResponseOK();</code> or <code>$this-&gt;assertResponseBody('Some content');</code>.
+I'm not sure that I like these more than the current more verbose matchers, but
+it might be worth exploring.</p>
+
+<p>At the moment, the helpers for <code>PUT</code>, <code>PATCH</code>, <code>HEAD</code>, and <code>DELETE</code> are
+untested.</p>
+
+<h2>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>Open an <a href="https://github.com/there4/slim-unit-testing-example/issues">issue</a> for questions, comments, or suggestions. Pull requests
+are welcome, please format the code to PSR-2 standards and include an
+explanation of the benefits.</p>
+
+<h2>
+<a name="thanks" class="anchor" href="#thanks"><span class="octicon octicon-link"></span></a>Thanks</h2>
+
+<p>Thanks must be given to <a href="https://github.com/njh">Nicholas Humfrey</a> for his work in this
+<a href="https://github.com/njh/njh.me/blob/master/test/IntegrationTest.php">integration testing harness</a>.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/there4">there4</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-8504376-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>

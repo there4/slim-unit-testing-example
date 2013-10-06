@@ -1,6 +1,7 @@
 
 Slim Unit Testing Example
 ================================================================================
+[![Build Status](https://travis-ci.org/there4/slim-unit-testing-example.png?branch=master)](https://travis-ci.org/there4/slim-unit-testing-example)
 
 SlimPHP is a great framework with a small footprint and everything you need to
 build fast applications. I've found it particularly well suited to delivering

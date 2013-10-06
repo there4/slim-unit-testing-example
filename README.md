@@ -12,6 +12,13 @@ testing with Slim, and have developed my own approach. I've refactored and
 introduced it into this sample application. I hope it will help others on their
 path to using this great framework.
 
+This application demonstrates complete end-to-end unit testing of a SlimPHP
+application and it's routes. With this approach, you'll be able to completely
+unit test your application without the need of Curl, webservers, or anything
+other than PHPUnit installed on your system. This makes it easy to test your
+entire app in an automated way with [TravisCI][tci]. Check out the
+[.travis.yml][yml] file in this project for an example of this.
+
 ## Example
 
 ```php
@@ -67,17 +74,19 @@ they match our expectations
 
 See the [ZenTest][zen_test] for an example of mocking with SlimPHP dependency
 injection. In this test we mock a Curl wrapper class from [Shuber][shuber]. This
-allows us to substitute responses, and run these unit tests that don't have the
-curl extension installed. We're totally isolated from that dependency while this
-test.
+allows us to substitute responses to exercise the parts of our application that
+we feel need testing. It also allows us to run these unit tests on systems that
+don't have the curl extension installed. We're totally isolated from that
+dependency while this test.
 
 The [FileStoreTest][file_test] uses a mock for the authentication
 class. Notice that the file store route doesn't use that class directly, but
-instead we're using the app container to swap out mocked version that allows us
-to determine if the authentication will pass or fail from within our test
-harness.
+instead it is used by the application authenticator method. We're using the app
+dependency injection container to swap out the real object for a mock version
+that allows us to control authentication results from within our test harness.
 
-You can read more about mocking in the [SlimDocs on DI][di].
+You can read more about dependency injection in the [SlimDocs on DI][di], and
+more about mock objects in the [PHPUnit docs][php_mock].
 
 ## Ideas and Extensions
 
@@ -95,6 +104,9 @@ untested.
 Thanks must be given to [Nicholas Humfrey][njh] for his work in this
 [integration testing harness][njh_test].
 
+[yml]: https://github.com/there4/slim-unit-testing-example/blob/master/.travis.yml
+[tci]: http://travis-ci.org
+[php_mock]: http://phpunit.de/manual/3.0/en/mock-objects.html
 [shuber]: https://github.com/shuber/curl
 [si]: http://docs.slimframework.com/#Response
 [di]: http://docs.slimframework.com/#Dependency-Injection

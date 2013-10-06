@@ -11,11 +11,13 @@
 // -----------------------------------------------------------------------------
 namespace There4\Authentication;
 
-class Cookie {
+class Cookie
+{
     // This is never going to authenticate anyone. However, when we mock this
     // we'll make it pass.
-    function authenticate($data) {
-      return false;
+    public function authenticate($data)
+    {
+        return false;
     }
 }
 

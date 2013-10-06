@@ -66,7 +66,7 @@ $app->get('/zen', function () use ($app) {
 // Fetch a file from the file store.
 // -----------------------------------------------------------------------------
 // Authenticated request for a file from the file store
-$app->get('/files/:filename', $authenticate($app), function ($filename) use ($app)  {
+$app->get('/files/:filename', $authenticate($app), function ($filename) use ($app) {
     $supported_types = (object) array(
         'json'    => 'application/json',
         'xml'     => 'application/xml',

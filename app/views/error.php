@@ -25,7 +25,8 @@
       Site Error
     </h1>
     <p>
-      A website error has occurred. The website administrator has been notified of the issue. Sorry for the temporary inconvenience.
+      A website error has occurred. The website administrator has been notified
+      of the issue. Sorry for the temporary inconvenience.
     </p>
     <p>
       <em><?php echo $e->getMessage(); ?></em>

@@ -13,13 +13,17 @@ introduced it into this sample application. I hope it will help others on their
 path to using this great framework.
 
 This application demonstrates complete end-to-end unit testing of a SlimPHP
-application and it's routes. With this approach, you'll be able to completely
+application and its routes. With this approach, you'll be able to completely
 unit test your application without the need of Curl, webservers, or anything
-other than PHPUnit installed on your system. This makes it easy to test your
-entire app in an automated way with [TravisCI][tci]. Check out the
+other than [PHPUnit][phpunit] installed on your system. This makes it easy to
+test your entire app in an automated way with [TravisCI][tci]. Check out the
 [.travis.yml][yml] file in this project for an example of this.
 
 ## Example
+
+Here's [a test][version_test] for a very simple endpoint that returns the version from the
+application config. We're asseting that Slim responded with a `200` and that
+the version matches what we expect.
 
 ```php
     class VersionTest extends Slim_Framework_TestCase {
@@ -33,12 +37,12 @@ entire app in an automated way with [TravisCI][tci]. Check out the
 
 ## Installation
 
-Run `composer install` and then `phpunit`. This application assumes that you
-have `phpunit` installed globally on your system. This application can be run as
-a functioning website. You can you use the sample apache config file in the
-`build/` folder, or use the native php webserver. To use the php webserver, run
-`php -S localhost:8080 -t public/` from the project root and open your browser
-to [http://localhost:8080][lh]
+Clone the repository and then run `composer install` and then `phpunit`. This
+application assumes that you have `phpunit` installed globally on your system.
+This application can be run as a functioning website. You can you use the sample
+apache config file in the `build/` folder, or use the native php webserver. To
+use the php webserver, run `php -S localhost:8080 -t public/` from the project
+root and open your browser to [http://localhost:8080][lh]
 
 ## Concepts
 
@@ -46,7 +50,7 @@ The `build/index.php` file serves as the application entry point. This file
 initializes a SlimPHP `$app` with production configuration, includes the routes
 file from `app/app.php` and then runs the app with `$app->run();`. This allows
 us to keep our application separate from the index, and gives us an opportunity
-to include our app file in a different context.
+to include our `app/app.php` file in a different context.
 
 When phpunit runs, it looks for the phpunit.xml file in our root. This file
 specifies a testing bootstrap file. PHPUnit includes `testing/bootstrap.php`.
@@ -55,8 +59,8 @@ testing configuration. The bootstrap keeps a reference to `$app` for the testing
 framework, and then provides several helper methods for `GET`, `POST`, `PUT`,
 `PATCH`, `HEAD`, and `DELETE`.
 
-With these method, you can run end to end tests on SlimPHP routes without need
-for a webserver. The tests run within a mock enviroment, and will be fast and
+With these methods, you can run end to end tests on SlimPHP routes without a
+webserver. The tests run entirely within a mock enviroment, and will be fast and
 efficient. 
 
 ## Unit Testing vs. Integration Testing
@@ -68,22 +72,23 @@ testing. We are running tests that work Slim from initial instantiation to the
 final delivery of data. With integration tests, we're treating the entire
 application as a unit, setting up a particular initial environment and then
 executing the `run()` command and finally inspecting the results to ensure that
-they match our expectations
+they match our expectations.
 
 ## Mocking with SlimPHP
 
 See the [ZenTest][zen_test] for an example of mocking with SlimPHP dependency
 injection. In this test we mock a Curl wrapper class from [Shuber][shuber]. This
-allows us to substitute responses to exercise the parts of our application that
+allows us to substitute responses and exercise the parts of our application that
 we feel need testing. It also allows us to run these unit tests on systems that
 don't have the curl extension installed. We're totally isolated from that
-dependency while this test.
+dependency while this running test.
 
 The [FileStoreTest][file_test] uses a mock for the authentication
 class. Notice that the file store route doesn't use that class directly, but
 instead it is used by the application authenticator method. We're using the app
-dependency injection container to swap out the real object for a mock version
-that allows us to control authentication results from within our test harness.
+dependency injection container to swap out the real object for a mock version.
+This approach allows us to control authentication results from within our test
+harness.
 
 You can read more about dependency injection in the [SlimDocs on DI][di], and
 more about mock objects in the [PHPUnit docs][php_mock].
@@ -99,11 +104,19 @@ it might be worth exploring.
 At the moment, the helpers for `PUT`, `PATCH`, `HEAD`, and `DELETE` are
 untested.
 
+## Contributing
+
+Open an [issue][issues] for questions, comments, or suggestions. Pull requests
+are welcome, please format the code to PSR-2 standards and include an
+explanation of the benefits.
+
 ## Thanks
 
 Thanks must be given to [Nicholas Humfrey][njh] for his work in this
 [integration testing harness][njh_test].
 
+[issues]: https://github.com/there4/slim-unit-testing-example/issues
+[phpunit]: http://phpunit.de/manual/current/en/index.html
 [yml]: https://github.com/there4/slim-unit-testing-example/blob/master/.travis.yml
 [tci]: http://travis-ci.org
 [php_mock]: http://phpunit.de/manual/3.0/en/mock-objects.html
@@ -112,6 +125,7 @@ Thanks must be given to [Nicholas Humfrey][njh] for his work in this
 [di]: http://docs.slimframework.com/#Dependency-Injection
 [file_test]: https://github.com/there4/slim-unit-testing-example/blob/master/tests/integration/FileStoreTest.php
 [zen_test]: https://github.com/there4/slim-unit-testing-example/blob/master/tests/integration/ZenTest.php
+[version_test]: https://github.com/there4/slim-unit-testing-example/blob/master/tests/integration/VersionTest.php
 [lh]: http://localhost:8080
 [bb]: http://backbonejs.org
 [njh]: https://github.com/njh

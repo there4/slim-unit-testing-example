@@ -15,6 +15,10 @@ $app->curl = function ($c) use ($app) {
     return new \Curl();
 };
 
+$app->authentication = function ($c) use ($app) {
+    return new \There4\Authentication\Cookie();
+};
+
 
 // Error Handler for any uncaught exception
 // -----------------------------------------------------------------------------
@@ -31,7 +35,8 @@ $app->error(function (\Exception $e) use ($app) {
 // Halt the response if the token is not valid.
 $authenticate = function ($app) {
     return function () use ($app) {
-        if (true) {
+        $auth = $app->authentication;
+        if ($auth->authenticate($app->cookies)) {
             return;
         }
         $app->halt(401, 'Invalid authentication token');

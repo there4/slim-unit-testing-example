@@ -59,7 +59,7 @@ framework, and then provides several helper methods for `GET`, `POST`, `PUT`,
 `PATCH`, `HEAD`, and `DELETE`.
 
 With these methods, you can run end to end tests on SlimPHP routes without a
-webserver. The tests run entirely within a mock enviroment, and will be fast and
+webserver. The tests run entirely within a mock environment, and will be fast and
 efficient. 
 
 ## Unit Testing vs. Integration Testing

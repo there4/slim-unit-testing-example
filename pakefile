@@ -13,21 +13,20 @@ pake_alias('default', 'test');
 function run_server()
 {
     $host = 'localhost:8008';
-    echo pakeColor::colorize('Now serving site from http://' . $host, 'INFO') . "\n";
+    pake_echo_comment('Now serving site from http://' . $host);
     pake_sh('php -S ' . $host . ' -t public', true);
 }
 
 function run_test()
 {
-    echo pakeColor::colorize(' * Unit testing', 'COMMENT') . "\n";
+    pake_echo_comment('Running unit suite');
     pake_sh('phpunit', true);
 }
 
 function run_sniff()
 {
-    echo pakeColor::colorize(' * Checking files for PSR2', 'COMMENT') . "\n";
+    pake_echo_comment('Checking files for PSR2');
     pake_sh("phpcs -p --standard=PSR2 ./public/index.php ./app ./lib");
 }
-
 
 /* End of file pakefile */

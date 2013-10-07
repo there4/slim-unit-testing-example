@@ -3,6 +3,9 @@
 // SlimPHP Example Application
 // =============================================================================
 //
+// This is the public entrance into our application. It sets up a production
+// SlimPHP environment, and runs the app.
+//
 // * Author: [Craig Davis](craig@there4development.com)
 // * Since: 10/2/2013
 //

@@ -3,6 +3,16 @@
 // SlimPHP Example Application
 // =============================================================================
 //
+// This is a small application with a few endpoints that have been designed to
+// highlight some common integration testing techniques. This application has
+// objects for external requests via Curl, and a custom authentication class.
+// We'll be able to mock both of those in order to control our application
+// state, and we've got some simple behaviors to test in the endpoint for
+// authenticated file storage access.
+//
+// Please view the `README.md` file, and check out the integration tests in
+// `tests/integration/`.
+//
 // * Author: [Craig Davis](craig@there4development.com)
 // * Since: 10/2/2013
 //
@@ -10,11 +20,12 @@
 
 
 // Dependency Injection Containers
-
+// -----------------------------------------------------------------------------
+// In our unit tests, we'll mock these so that we can control our application
+// state.
 $app->curl = function ($c) use ($app) {
     return new \Curl();
 };
-
 $app->authentication = function ($c) use ($app) {
     return new \There4\Authentication\Cookie();
 };
@@ -23,20 +34,20 @@ $app->authentication = function ($c) use ($app) {
 // Error Handler for any uncaught exception
 // -----------------------------------------------------------------------------
 // This can be silenced by turning on Slim Debugging. All exceptions thrown by
-// our app will be collected here.
+// our application will be collected here.
 $app->error(function (\Exception $e) use ($app) {
     $app->response->setStatus(500);
     include __DIR__ . '/views/error.php';
 });
 
 
-// Token Authentication
+// Token Authentication Middleware
 // -----------------------------------------------------------------------------
 // Halt the response if the token is not valid.
 $authenticate = function ($app) {
     return function () use ($app) {
         $auth = $app->authentication;
-        if ($auth->authenticate($app->cookies)) {
+        if ($auth->authenticate($app->getCookie('ApiToken'))) {
             return;
         }
         $app->halt(401, 'Invalid authentication token');
@@ -46,7 +57,7 @@ $authenticate = function ($app) {
 
 // Version Endpoint
 // -----------------------------------------------------------------------------
-// Heartbeat endpoint, should always return 200
+// Heartbeat endpoint, should always return 200 and the application version.
 $app->get('/version', function () use ($app) {
     echo $app->config('version');
 });
@@ -75,16 +86,18 @@ $app->get('/files/:filename', $authenticate($app), function ($filename) use ($ap
         'unknown' => 'application/octet-stream'
     );
 
-    $filename = pathinfo($filename, PATHINFO_BASENAME);
+    $filename  = pathinfo($filename, PATHINFO_BASENAME);
     $extension = pathinfo($filename, PATHINFO_EXTENSION);
-    $path = __DIR__ . '/../file_store/' . $filename;
-    if (!file_exists($path)) {
-        $app->notFound();
-    }
+    $path      = realpath(__DIR__ . '/../file_store/' . $filename);
+
     $content_type
         = property_exists($supported_types, $extension)
         ? $supported_types->$extension
         : $supported_types->unknown;
+
+    if (!is_readable($path)) {
+        $app->notFound();
+    }
 
     $app->response->headers->set('Content-Type', $content_type);
     readfile($path);

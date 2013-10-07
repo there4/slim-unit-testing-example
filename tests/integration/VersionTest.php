@@ -1,9 +1,5 @@
 <?php
 
-// What about a PHPUnit custom set of assertions?
-//   $this->assertResponseStatus($response, 200);
-//   $this->assertResponseBody($response, $this->app->config('version'));
-
 class VersionTest extends Slim_Framework_TestCase
 {
     public function testVersion()

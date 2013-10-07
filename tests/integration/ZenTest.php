@@ -2,7 +2,6 @@
 
 class ZenTest extends Slim_Framework_TestCase
 {
-
     // Use dependency injection to mock the Curl object.
     public function testCanFetchZenFromGitHub()
     {

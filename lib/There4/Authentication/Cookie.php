@@ -15,7 +15,7 @@ class Cookie
 {
     // This is never going to authenticate anyone. However, when we mock this
     // we'll make it pass.
-    public function authenticate($data)
+    public function authenticate($token)
     {
         return false;
     }

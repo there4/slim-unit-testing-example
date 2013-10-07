@@ -1,4 +1,3 @@
-
 Slim Unit Testing Example
 ================================================================================
 [![Build Status](https://travis-ci.org/there4/slim-unit-testing-example.png?branch=master)](https://travis-ci.org/there4/slim-unit-testing-example)
@@ -22,7 +21,7 @@ test your entire app in an automated way with [TravisCI][tci]. Check out the
 ## Example
 
 Here's [a test][version_test] for a very simple endpoint that returns the version from the
-application config. We're asseting that Slim responded with a `200` and that
+application config. We're asserting that Slim responded with a `200` and that
 the version matches what we expect.
 
 ```php

@@ -2,7 +2,7 @@ Slim Unit Testing Example
 ================================================================================
 [![Build Status](https://travis-ci.org/there4/slim-unit-testing-example.png?branch=master)](https://travis-ci.org/there4/slim-unit-testing-example)
 
-SlimPHP is a great framework with a small footprint and everything you need to
+[Slim][slim] is a great PHP framework with a small footprint and everything you need to
 build fast applications. I've found it particularly well suited to delivering
 data to [BackboneJS][bb] applications.
 
@@ -114,6 +114,7 @@ explanation of the benefits.
 Thanks must be given to [Nicholas Humfrey][njh] for his work in this
 [integration testing harness][njh_test].
 
+[slim]: http://www.slimframework.com/
 [issues]: https://github.com/there4/slim-unit-testing-example/issues
 [phpunit]: http://phpunit.de/manual/current/en/index.html
 [yml]: https://github.com/there4/slim-unit-testing-example/blob/master/.travis.yml

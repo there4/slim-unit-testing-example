@@ -15,10 +15,12 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-class Slim_Framework_TestCase extends PHPUnit_Framework_TestCase {
+class Slim_Framework_TestCase extends PHPUnit_Framework_TestCase
+{
 
     // Initialize our own copy of the slim application
-    public function setup() {
+    public function setup()
+    {
         $app = new \Slim\Slim(array(
             'version' => '0.0.0',
             'debug'   => false,
@@ -33,7 +35,8 @@ class Slim_Framework_TestCase extends PHPUnit_Framework_TestCase {
 
     // Abstract way to make a request to SlimPHP, this allows us to mock the
     // slim environment
-    public function request($method, $path, $options = array()) {
+    public function request($method, $path, $options = array())
+    {
         // Capture STDOUT
         ob_start();
 
@@ -55,30 +58,36 @@ class Slim_Framework_TestCase extends PHPUnit_Framework_TestCase {
         return ob_get_clean();
     }
 
-    public function get($path, $options = array()) {
+    public function get($path, $options = array())
+    {
         return $this->request('GET', $path, $options);
     }
 
-    public function post($path, $options = array(), $postVars = array()) {
+    public function post($path, $options = array(), $postVars = array())
+    {
         $options['slim.input'] = http_build_query($postVars);
         return $this->request('POST', $path, $options);
     }
 
-    public function patch($path, $options = array(), $postVars = array()) {
+    public function patch($path, $options = array(), $postVars = array())
+    {
         $options['slim.input'] = http_build_query($postVars);
         return $this->request('PATCH', $path, $options);
     }
 
-    public function put($path, $options = array(), $postVars = array()) {
+    public function put($path, $options = array(), $postVars = array())
+    {
         $options['slim.input'] = http_build_query($postVars);
         return $this->request('PUT', $path, $options);
     }
 
-    public function delete($path, $options = array()) {
-        return $this->request('POST', $path, $options);
+    public function delete($path, $options = array())
+    {
+        return $this->request('DELETE', $path, $options);
     }
 
-    public function head($path, $options = array()) {
+    public function head($path, $options = array())
+    {
         return $this->request('HEAD', $path, $options);
     }
 

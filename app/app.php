@@ -43,6 +43,7 @@ $authenticate = function ($app) {
     };
 };
 
+
 // Version Endpoint
 // -----------------------------------------------------------------------------
 // Heartbeat endpoint, should always return 200

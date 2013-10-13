@@ -45,7 +45,7 @@ root and open your browser to [http://localhost:8080][lh]
 
 ## Concepts
 
-The `build/index.php` file serves as the application entry point. This file
+The `public/index.php` file serves as the application entry point. This file
 initializes a SlimPHP `$app` with production configuration, includes the routes
 file from `app/app.php` and then runs the app with `$app->run();`. This allows
 us to keep our application separate from the index, and gives us an opportunity

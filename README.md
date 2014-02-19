@@ -114,6 +114,12 @@ explanation of the benefits.
 Thanks must be given to [Nicholas Humfrey][njh] for his work in this
 [integration testing harness][njh_test].
 
+## Changelog
+
+* 0.0.9 Bug fix for [issue 4][issue4], with thanks to origal for his work in
+  solving a problem with get parameters.
+
+
 [slim]: http://www.slimframework.com/
 [issues]: https://github.com/there4/slim-unit-testing-example/issues
 [phpunit]: http://phpunit.de/manual/current/en/index.html
@@ -130,3 +136,4 @@ Thanks must be given to [Nicholas Humfrey][njh] for his work in this
 [bb]: http://backbonejs.org
 [njh]: https://github.com/njh
 [njh_test]: https://github.com/njh/njh.me/blob/master/test/IntegrationTest.php
+[issue4]: https://github.com/there4/slim-unit-testing-example/issues/4

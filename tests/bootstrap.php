@@ -41,11 +41,12 @@ class Slim_Framework_TestCase extends PHPUnit_Framework_TestCase
         ob_start();
 
         // Prepare a mock environment
-        \Slim\Environment::mock(array_merge(array(
+        \Slim\Environment::mock(array(
             'REQUEST_METHOD' => $method,
             'PATH_INFO'      => $path,
             'SERVER_NAME'    => 'local.dev',
-        ), $options));
+            'QUERY_STRING'   => http_build_query($options)
+        ));
 
         // Establish some useful references to the slim app properties
         $this->request  = $this->app->request();

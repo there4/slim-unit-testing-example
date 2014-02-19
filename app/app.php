@@ -104,4 +104,13 @@ $app->get('/files/:filename', $authenticate($app), function ($filename) use ($ap
 });
 
 
+// Say hello to a user
+// -----------------------------------------------------------------------------
+// Used to test get parameters from [issue 4](https://github.com/there4/slim-unit-testing-example/issues/4).
+$app->get('/say-hello',function() use ($app){
+   $name = $app->request->get('name');
+   $response = $name ? 'Hello ' . $name : 'Missing get parameter for name';
+   $app->response->write($response);
+});
+
 /* End of file app.php */

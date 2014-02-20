@@ -3,20 +3,86 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "09463ea9b0d5447883aa64de5dd90ce1",
+    "hash": "a5861b6b3fafed6120351930bbf85d89",
     "packages": [
+        {
+            "name": "indeyets/pake",
+            "version": "1.99.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/indeyets/pake.git",
+                "reference": "410d0d5c18bb3438d323570fdb502402aa7a1aba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/indeyets/pake/zipball/410d0d5c18bb3438d323570fdb502402aa7a1aba",
+                "reference": "410d0d5c18bb3438d323570fdb502402aa7a1aba",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.2.1"
+            },
+            "require-dev": {
+                "simpletest/simpletest": "1.1.*"
+            },
+            "suggest": {
+                "ext-bz2": "*",
+                "ext-pcntl": "*",
+                "ext-phar": "*",
+                "ext-posix": "*",
+                "ext-zlib": "*",
+                "phing/phing": "2.4.*",
+                "simpletest/simpletest": "1.1.*"
+            },
+            "bin": [
+                "bin/pake"
+            ],
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "lib/pake/autoload.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien.potencier@symfony-project.org",
+                    "homepage": "http://fabien.potencier.org/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Alexey Zakhlestin",
+                    "email": "indeyets@gmail.com",
+                    "homepage": "https://indeyets.ru/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP automation tool inspired by Rake",
+            "homepage": "https://github.com/indeyets/pake/wiki",
+            "keywords": [
+                "automation",
+                "build",
+                "task"
+            ],
+            "time": "2013-11-04 08:29:46"
+        },
         {
             "name": "shuber/curl",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hamstar/curl.git",
-                "reference": "03556aa2811cda00bbc4e587c63dac1bf8853167"
+                "reference": "6624992df201f9fd7262080117385dd09b0ecd2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hamstar/curl/zipball/03556aa2811cda00bbc4e587c63dac1bf8853167",
-                "reference": "03556aa2811cda00bbc4e587c63dac1bf8853167",
+                "url": "https://api.github.com/repos/hamstar/curl/zipball/6624992df201f9fd7262080117385dd09b0ecd2b",
+                "reference": "6624992df201f9fd7262080117385dd09b0ecd2b",
                 "shasum": ""
             },
             "type": "library",
@@ -36,20 +102,20 @@
                 "scraper",
                 "spider"
             ],
-            "time": "2012-09-29 12:28:21"
+            "time": "2013-11-23 01:44:31"
         },
         {
             "name": "slim/slim",
-            "version": "2.3.2",
+            "version": "2.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeguy/Slim.git",
-                "reference": "a9abd36d53d9c1f7732f490f8e809e55045307b3"
+                "reference": "3dec4f9ee2e9c204a9f334afd72abc174c1b792e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeguy/Slim/zipball/a9abd36d53d9c1f7732f490f8e809e55045307b3",
-                "reference": "a9abd36d53d9c1f7732f490f8e809e55045307b3",
+                "url": "https://api.github.com/repos/codeguy/Slim/zipball/3dec4f9ee2e9c204a9f334afd72abc174c1b792e",
+                "reference": "3dec4f9ee2e9c204a9f334afd72abc174c1b792e",
                 "shasum": ""
             },
             "require": {
@@ -80,7 +146,7 @@
                 "rest",
                 "router"
             ],
-            "time": "2013-09-29 19:46:31"
+            "time": "2013-10-31 02:05:09"
         }
     ],
     "packages-dev": [

@@ -107,10 +107,21 @@ $app->get('/files/:filename', $authenticate($app), function ($filename) use ($ap
 // Say hello to a user
 // -----------------------------------------------------------------------------
 // Used to test parameters from [issue 4](https://github.com/there4/slim-unit-testing-example/issues/4).
+$app->get('/say',function() use ($app){
+   include __DIR__ . '/views/hello.php';
+});
+
 $app->map('/say-hello',function() use ($app){
    $name = $app->request->params('name');
    $response = $name ? 'Hello ' . $name : 'Missing parameter for name';
    $app->response->write($response);
 })->via('GET', 'POST', 'PUT');
+
+$app->post('/issue3',function() use ($app){
+   $name = $app->request->post('name');
+   $response = $name ? 'Hello ' . $name : 'Missing parameter for name';
+   $app->response->write($response);
+});
+
 
 /* End of file app.php */

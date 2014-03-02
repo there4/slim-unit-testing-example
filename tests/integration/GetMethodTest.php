@@ -4,10 +4,9 @@ class GetMethodTest extends Slim_Framework_TestCase
 {
     public function testSayHello()
     {
-        $parameters = array('name' => 'William Edwards');
-        $this->get('/say-hello', $parameters);
+        $this->get('/say-hello/William');
         $this->assertEquals(200, $this->response->status());
-        $this->assertSame('Hello William Edwards', $this->response->body());
+        $this->assertSame('Hello William', $this->response->body());
     }
 }
 

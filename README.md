@@ -101,7 +101,7 @@ I'm not sure that I like these more than the current more verbose matchers, but
 it might be worth exploring.
 
 At the moment, the helpers for `PUT`, `PATCH`, `HEAD`, and `DELETE` are
-untested.
+sparsely tested.
 
 ## Contributing
 
@@ -116,6 +116,7 @@ Thanks must be given to [Nicholas Humfrey][njh] for his work in this
 
 ## Changelog
 
+* 0.1.0 Backwards compatibility breaking - Reorder the parameters on the `get()`, `post()` and http testing methods to be in the new order of `$this->$method($path, $formVars, $optionalHeaders);`. This makes the testing a little more terse, and clears up any confusion with improved parameter names.
 * 0.0.9 Bug fix for [issue 4][issue4], with thanks to origal for his work in
   solving a problem with get parameters.
 

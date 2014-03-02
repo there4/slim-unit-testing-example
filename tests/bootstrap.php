@@ -17,16 +17,22 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 class Slim_Framework_TestCase extends PHPUnit_Framework_TestCase
 {
+    // We support these methods for testing. These are available via
+    // `this->get()` and `$this->post()`. This is accomplished with the
+    // `__call()` magic method below.
+    private $testingMethods = array('get', 'post', 'patch', 'put', 'delete', 'head');
 
-    // Initialize our own copy of the slim application
+    // Run for each unit test to setup our slim app environment
     public function setup()
     {
+        // Initialize our own copy of the slim application
         $app = new \Slim\Slim(array(
             'version' => '0.0.0',
             'debug'   => false,
             'mode'    => 'testing'
         ));
 
+        // Include our core application file
         require __DIR__ . '/../app/app.php';
 
         // Establish a local reference to the Slim app object
@@ -35,18 +41,18 @@ class Slim_Framework_TestCase extends PHPUnit_Framework_TestCase
 
     // Abstract way to make a request to SlimPHP, this allows us to mock the
     // slim environment
-    public function request($method, $path, $options = array())
+    private function request($method, $path, $formVars = array(), $optionalHeaders = array())
     {
         // Capture STDOUT
         ob_start();
 
         // Prepare a mock environment
-        \Slim\Environment::mock(array(
-            'REQUEST_METHOD' => $method,
+        \Slim\Environment::mock(array_merge(array(
+            'REQUEST_METHOD' => strtoupper($method),
             'PATH_INFO'      => $path,
             'SERVER_NAME'    => 'local.dev',
-            'QUERY_STRING'   => http_build_query($options)
-        ));
+            'slim.input'     => http_build_query($formVars)
+        ), $optionalHeaders));
 
         // Establish some useful references to the slim app properties
         $this->request  = $this->app->request();
@@ -59,39 +65,14 @@ class Slim_Framework_TestCase extends PHPUnit_Framework_TestCase
         return ob_get_clean();
     }
 
-    public function get($path, $options = array())
-    {
-        return $this->request('GET', $path, $options);
+    // Implement our `get`, `post`, and other http operations
+    public function __call($method, $arguments) {
+        if (in_array($method, $this->testingMethods)) {
+            list($path, $formVars, $headers) = array_pad($arguments, 3, array());
+            return $this->request($method, $path, $formVars, $headers);
+        }
+        throw new \BadMethodCallException(strtoupper($method) . ' is not supported');
     }
-
-    public function post($path, $options = array(), $postVars = array())
-    {
-        $options['slim.input'] = http_build_query($postVars);
-        return $this->request('POST', $path, $options);
-    }
-
-    public function patch($path, $options = array(), $postVars = array())
-    {
-        $options['slim.input'] = http_build_query($postVars);
-        return $this->request('PATCH', $path, $options);
-    }
-
-    public function put($path, $options = array(), $postVars = array())
-    {
-        $options['slim.input'] = http_build_query($postVars);
-        return $this->request('PUT', $path, $options);
-    }
-
-    public function delete($path, $options = array())
-    {
-        return $this->request('DELETE', $path, $options);
-    }
-
-    public function head($path, $options = array())
-    {
-        return $this->request('HEAD', $path, $options);
-    }
-
 }
 
 /* End of file bootstrap.php */

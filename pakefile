@@ -6,6 +6,9 @@ pake_task('server');
 pake_desc('Check the code for psr2 standards');
 pake_task('sniff');
 
+pake_desc('Update the contributors in the README');
+pake_task('contributors');
+
 pake_desc('Run syntax and unit tests');
 pake_task('test');
 pake_alias('default', 'test');
@@ -27,6 +30,28 @@ function run_sniff()
 {
     pake_echo_comment('Checking files for PSR2');
     pake_sh("./vendor/bin/phpcs -p --standard=PSR2 ./public/index.php ./app ./lib");
+}
+
+function run_contributors()
+{
+    $startPoint   = '## Contributors';
+    $endPoint     = '## Changelog';
+    $readme       = file_get_contents("README.md");
+    $contributors = explode("\n", shell_exec("git shortlog -s -n"));
+    $table        = "| Author | Commits\n| --- | ---\n";
+    foreach ($contributors as $contributor) {
+      if (!trim($contributor)) { continue; }
+      $contributor = explode("\t", $contributor);
+      $table .= sprintf(
+        "| %s | %s |\n", trim($contributor[1]), trim($contributor[0])
+      );
+    }
+    $output = preg_replace(
+        '/('.preg_quote($startPoint).')(.*)('.preg_quote($endPoint).')/si',
+        "$1\n\n$table\n$3",
+        $readme
+    );
+    file_put_contents("README.md", $output);
 }
 
 /* End of file pakefile */

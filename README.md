@@ -106,10 +106,13 @@ Open an [issue][issues] for questions, comments, or suggestions. Pull requests
 are welcome, please format the code to PSR-2 standards and include an
 explanation of the benefits.
 
-## Thanks
 
-Thanks must be given to [Nicholas Humfrey][njh] for his work in this
-[integration testing harness][njh_test].
+## Contributors
+
+| Author | Commits
+| --- | ---
+| Craig Davis | 52 |
+| Jeremy Kendall | 3 |
 
 ## Changelog
 
@@ -123,6 +126,11 @@ Thanks must be given to [Nicholas Humfrey][njh] for his work in this
 * 0.0.9 Bug fix for [issue 4][issue4], with thanks to origal for his work in
   solving a problem with get parameters.
 
+
+## Thanks
+
+Thanks must be given to [Nicholas Humfrey][njh] for his work in this
+[integration testing harness][njh_test].
 
 [bb]: http://backbonejs.org
 [bootstrap]: https://github.com/there4/slim-unit-testing-example/blob/master/tests/bootstrap.php

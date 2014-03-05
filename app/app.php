@@ -31,14 +31,18 @@ $app->authentication = function ($c) use ($app) {
 };
 
 
-// Error Handler for any uncaught exception
+// Twig View Rendering
 // -----------------------------------------------------------------------------
-// This can be silenced by turning on Slim Debugging. All exceptions thrown by
-// our application will be collected here.
-$app->error(function (\Exception $e) use ($app) {
-    $app->response->setStatus(500);
-    include __DIR__ . '/views/error.php';
-});
+// Setup our renderer and add some global variables
+$app->view(new \Slim\Views\Twig());
+$app->view->parserOptions = array(
+    'charset'          => 'utf-8',
+    'cache'            => false,
+    'auto_reload'      => true,
+    'strict_variables' => true,
+    'autoescape'       => true
+);
+$app->view->parserExtensions = array(new \Slim\Views\TwigExtension());
 
 
 // Token Authentication Middleware
@@ -55,11 +59,30 @@ $authenticate = function ($app) {
 };
 
 
+// Error Handler for any uncaught exception
+// -----------------------------------------------------------------------------
+// This can be silenced by turning on Slim Debugging. All exceptions thrown by
+// our application will be collected here.
+$app->error(function (\Exception $e) use ($app) {
+    $app->render('error.html', array(
+	'message' => $e->getMessage()
+    ), 500);
+});
+
+
+// Welcome Page
+// -----------------------------------------------------------------------------
+// A simple about the project page
+$app->get('/', function () use ($app) {
+    $app->render('about.html');
+});
+
+
 // Version Endpoint
 // -----------------------------------------------------------------------------
 // Heartbeat endpoint, should always return 200 and the application version.
 $app->get('/version', function () use ($app) {
-    echo $app->config('version');
+    $app->response->write($app->config('version'));
 });
 
 
@@ -71,7 +94,7 @@ $app->get('/zen', function () use ($app) {
     if ($response->headers['Status-Code'] != 200) {
         $app->halt(502, 'GitHub has failed with :' + $response->headers['Status-Code']);
     }
-    echo $response->body;
+    $app->response->write($response->body);
 });
 
 
@@ -112,11 +135,13 @@ $app->get('/say-hello/:name', function ($name) use ($app) {
    $app->response->write($response);
 });
 
+
 $app->map('/say-hello', function () use ($app) {
    $name = $app->request->params('name');
    $response = $name ? 'Hello ' . $name : 'Missing parameter for name';
    $app->response->write($response);
 })->via('POST', 'PUT');
+
 
 $app->post('/issue3', function () use ($app) {
    $name = $app->request->post('name');

@@ -27,9 +27,10 @@ class Slim_Framework_TestCase extends PHPUnit_Framework_TestCase
     {
         // Initialize our own copy of the slim application
         $app = new \Slim\Slim(array(
-            'version' => '0.0.0',
-            'debug'   => false,
-            'mode'    => 'testing'
+	    'version'        => '0.0.0',
+	    'debug'          => false,
+	    'mode'           => 'testing',
+	    'templates.path' => __DIR__ . '/../app/templates'
         ));
 
         // Include our core application file

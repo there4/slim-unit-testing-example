@@ -65,7 +65,7 @@ $authenticate = function ($app) {
 // our application will be collected here.
 $app->error(function (\Exception $e) use ($app) {
     $app->render('error.html', array(
-	'message' => $e->getMessage()
+        'message' => $e->getMessage()
     ), 500);
 });
 

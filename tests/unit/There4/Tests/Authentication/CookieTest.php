@@ -12,3 +12,5 @@ class CookieTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($cookie->authenticate('token'));
     }
 }
+
+/* End of file CookieTest.php */

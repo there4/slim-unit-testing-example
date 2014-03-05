@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "slim/slim": "2.3.*",
+        "slim/slim": "2.4.*",
         "slim/views": "0.1.*",
         "shuber/curl": "dev-master",
         "indeyets/pake": "~1.99",

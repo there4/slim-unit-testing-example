@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>{% block title %}Slim Unit Testing Example{% endblock %}</title>
+        <style>
+            body {
+                margin:0;
+                padding:30px;
+                font:12px/1.5 Helvetica,Arial,Verdana,sans-serif;
+                border-top: 6px solid #8e44ad;
+            }
+            body.error {
+                border-color: #e74c3c;
+            }
+            h1 {
+                margin:0;
+                font-size:48px;
+                font-weight:normal;
+                line-height:48px;
+            }
+            em {
+                color: #7f8c8d;
+            }
+        </style>
+    </head>
+    <body class="{% block body_css %}{% endblock %}">
+        {% block body %}{% endblock %}
+    </body>
+</html>

@@ -17,6 +17,9 @@
 	"indeyets/pake": "~1.99",
 	"twig/twig": "1.15.0"
     },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
     "autoload": {
         "psr-0": {"There4": "lib/"}
     }

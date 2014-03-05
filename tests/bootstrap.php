@@ -13,6 +13,11 @@
 //
 // -----------------------------------------------------------------------------
 
+error_reporting(-1);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+date_default_timezone_set('UTC');
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 class Slim_Framework_TestCase extends PHPUnit_Framework_TestCase
@@ -27,10 +32,10 @@ class Slim_Framework_TestCase extends PHPUnit_Framework_TestCase
     {
         // Initialize our own copy of the slim application
         $app = new \Slim\Slim(array(
-	    'version'        => '0.0.0',
-	    'debug'          => false,
-	    'mode'           => 'testing',
-	    'templates.path' => __DIR__ . '/../app/templates'
+            'version'        => '0.0.0',
+            'debug'          => false,
+            'mode'           => 'testing',
+            'templates.path' => __DIR__ . '/../app/templates'
         ));
 
         // Include our core application file

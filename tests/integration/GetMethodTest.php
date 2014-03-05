@@ -1,6 +1,8 @@
 <?php
 
-class GetMethodTest extends Slim_Framework_TestCase
+use There4\Tests\SlimFrameworkTestCase;
+
+class GetMethodTest extends SlimFrameworkTestCase
 {
     public function testSayHello()
     {

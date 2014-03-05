@@ -1,6 +1,8 @@
 <?php
 
-class PutMethodTest extends Slim_Framework_TestCase
+use There4\Tests\SlimFrameworkTestCase;
+
+class PutMethodTest extends SlimFrameworkTestCase
 {
     public function testSayHello()
     {

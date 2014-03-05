@@ -1,6 +1,8 @@
 <?php
 
-class PostMethodTest extends Slim_Framework_TestCase
+use There4\Tests\SlimFrameworkTestCase;
+
+class PostMethodTest extends SlimFrameworkTestCase
 {
 
     public function testSayHello()

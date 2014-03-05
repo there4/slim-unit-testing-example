@@ -1,6 +1,8 @@
 <?php
 
-class VersionTest extends Slim_Framework_TestCase
+use There4\Tests\SlimFrameworkTestCase;
+
+class VersionTest extends SlimFrameworkTestCase
 {
     public function testVersion()
     {

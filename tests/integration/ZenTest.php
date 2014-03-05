@@ -1,6 +1,8 @@
 <?php
 
-class ZenTest extends Slim_Framework_TestCase
+use There4\Tests\SlimFrameworkTestCase;
+
+class ZenTest extends SlimFrameworkTestCase
 {
     // Use dependency injection to mock the Curl object.
     public function testCanFetchZenFromGitHub()

@@ -1,6 +1,8 @@
 <?php
 
-class FileStoreTest extends Slim_Framework_TestCase
+use There4\Tests\SlimFrameworkTestCase;
+
+class FileStoreTest extends SlimFrameworkTestCase
 {
     const AUTH_PASS = true;
     const AUTH_FAIL = false;

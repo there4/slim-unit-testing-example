@@ -20,13 +20,13 @@ function run_server()
 function run_test()
 {
     pake_echo_comment('Running unit suite');
-    pake_sh('phpunit', true);
+    pake_sh('./vendor/bin/phpunit', true);
 }
 
 function run_sniff()
 {
     pake_echo_comment('Checking files for PSR2');
-    pake_sh("phpcs -p --standard=PSR2 ./public/index.php ./app ./lib");
+    pake_sh("./vendor/bin/phpcs -p --standard=PSR2 ./public/index.php ./app ./lib");
 }
 
 /* End of file pakefile */

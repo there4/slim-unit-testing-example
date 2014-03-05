@@ -12,13 +12,15 @@
     ],
     "require": {
         "slim/slim": "2.3.*",
-	"slim/views": "0.1.*",
+        "slim/views": "0.1.*",
         "shuber/curl": "dev-master",
-	"indeyets/pake": "~1.99",
-	"twig/twig": "1.15.0"
+        "indeyets/pake": "~1.99",
+        "twig/twig": "1.15.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "3.7.*"
+        "squizlabs/php_codesniffer": "1.*",
+        "phpunit/phpunit": "3.7.*",
+        "indeyets/pake": "~1.99"
     },
     "autoload": {
         "psr-0": {"There4": "lib/"}

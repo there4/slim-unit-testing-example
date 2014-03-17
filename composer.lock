@@ -210,12 +210,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/there4/slim-test-helpers.git",
-                "reference": "d113dd1dcd4722040e16afe5036d3ef1306e1f5f"
+                "reference": "54e0c579b8bb0b0e8cde9c7de240b5759c079e32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/there4/slim-test-helpers/zipball/d113dd1dcd4722040e16afe5036d3ef1306e1f5f",
-                "reference": "d113dd1dcd4722040e16afe5036d3ef1306e1f5f",
+                "url": "https://api.github.com/repos/there4/slim-test-helpers/zipball/54e0c579b8bb0b0e8cde9c7de240b5759c079e32",
+                "reference": "54e0c579b8bb0b0e8cde9c7de240b5759c079e32",
                 "shasum": ""
             },
             "type": "library",
@@ -241,7 +241,7 @@
             "keywords": [
                 "slim"
             ],
-            "time": "2014-03-14 15:02:01"
+            "time": "2014-03-17 19:07:32"
         },
         {
             "name": "twig/twig",

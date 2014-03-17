@@ -11,10 +11,11 @@
         }
     ],
     "require": {
+        "indeyets/pake": "~1.99",
+        "shuber/curl": "dev-master",
         "slim/slim": "2.4.*",
         "slim/views": "0.1.*",
-        "shuber/curl": "dev-master",
-        "indeyets/pake": "~1.99",
+        "there4/slim-test-helpers": "dev-master",
         "twig/twig": "1.15.0"
     },
     "require-dev": {

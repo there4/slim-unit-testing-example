@@ -111,7 +111,7 @@ explanation of the benefits.
 
 | Author | Commits
 | --- | ---
-| Craig Davis | 52 |
+| Craig Davis | 58 |
 | Jeremy Kendall | 3 |
 
 ## Changelog

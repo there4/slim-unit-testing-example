@@ -1,30 +1,14 @@
 <?php
 
-use There4\Slim\Test\WebTestCase;
-
-class FileStoreTest extends WebTestCase
+class FileStoreTest extends LocalWebTestCase
 {
     const AUTH_PASS = true;
     const AUTH_FAIL = false;
 
-    public function getSlimInstance() {
-        // Initialize our own copy of the slim application
-        $app = new \Slim\Slim(array(
-            'version'        => '0.0.0',
-            'debug'          => false,
-            'mode'           => 'testing',
-            'templates.path' => __DIR__ . '/../app/templates'
-        ));
-
-        // Include our core application file
-        require PROJECT_ROOT . '/app/app.php';
-        return $app;
-    }
-
-    private function setAuthenticationMock($passFail)
+    private function setAuthenticationMock($response)
     {
         $auth = $this->getMock('\There4\Authentication\Cookie');
-        $auth->expects($this->any())->method('authenticate')->will($this->returnValue($passFail));
+        $auth->expects($this->any())->method('authenticate')->will($this->returnValue($response));
         $this->app->authentication = function ($c) use ($auth) {
             return $auth;
         };

@@ -1,6 +1,6 @@
 <?php
 
-class ZenTest extends Slim_Framework_TestCase
+class ZenTest extends LocalWebTestCase
 {
     // Use dependency injection to mock the Curl object.
     public function testCanFetchZenFromGitHub()
@@ -17,9 +17,9 @@ class ZenTest extends Slim_Framework_TestCase
             return $curl;
         };
 
-        $this->get('/zen');
-        $this->assertEquals(200, $this->response->status());
-        $this->assertEquals($expected, $this->response->body());
+        $this->client->get('/zen');
+        $this->assertEquals(200, $this->client->response->status());
+        $this->assertEquals($expected, $this->client->response->body());
     }
 
     public function testZenResponseWhenGitHubFails()
@@ -35,8 +35,8 @@ class ZenTest extends Slim_Framework_TestCase
             return $curl;
         };
 
-        $this->get('/zen');
-        $this->assertEquals(502, $this->response->status());
+        $this->client->get('/zen');
+        $this->assertEquals(502, $this->client->response->status());
     }
 }
 

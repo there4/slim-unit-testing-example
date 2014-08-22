@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "b92f7badb02baceff670336217939cd0",
+    "hash": "d3941fba2ce099c426e1cb8d1c211719",
     "packages": [
         {
             "name": "indeyets/pake",
@@ -203,6 +203,45 @@
                 "templating"
             ],
             "time": "2013-12-08 10:18:35"
+        },
+        {
+            "name": "there4/slim-test-helpers",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/there4/slim-test-helpers.git",
+                "reference": "54e0c579b8bb0b0e8cde9c7de240b5759c079e32"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/there4/slim-test-helpers/zipball/54e0c579b8bb0b0e8cde9c7de240b5759c079e32",
+                "reference": "54e0c579b8bb0b0e8cde9c7de240b5759c079e32",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "There4": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Craig Davis",
+                    "email": "craig@there4development.com",
+                    "homepage": "http://there4development.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Integration testing helpers for the Slim Framework",
+            "homepage": "https://github.com/there4/slim-test-helpers",
+            "keywords": [
+                "slim"
+            ],
+            "time": "2014-03-17 19:07:32"
         },
         {
             "name": "twig/twig",
@@ -750,7 +789,8 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "shuber/curl": 20
+        "shuber/curl": 20,
+        "there4/slim-test-helpers": 20
     },
     "platform": [
 

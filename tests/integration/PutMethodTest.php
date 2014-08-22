@@ -1,13 +1,13 @@
 <?php
 
-class PutMethodTest extends Slim_Framework_TestCase
+class PutMethodTest extends LocalWebTestCase
 {
     public function testSayHello()
     {
         $parameters = array('name' => 'William Edwards');
-        $this->put('/say-hello', $parameters, array('CONTENT_TYPE' => 'application/x-www-form-urlencoded'));
-        $this->assertEquals(200, $this->response->status());
-        $this->assertSame('Hello William Edwards', $this->response->body());
+        $this->client->put('/say-hello', $parameters, array('CONTENT_TYPE' => 'application/x-www-form-urlencoded'));
+        $this->assertEquals(200, $this->client->response->status());
+        $this->assertSame('Hello William Edwards', $this->client->response->body());
     }
 }
 

@@ -1,12 +1,12 @@
 <?php
 
-class VersionTest extends Slim_Framework_TestCase
+class VersionTest extends LocalWebTestCase
 {
     public function testVersion()
     {
-        $this->get('/version');
-        $this->assertEquals(200, $this->response->status());
-        $this->assertEquals($this->app->config('version'), $this->response->body());
+        $this->client->get('/version');
+        $this->assertEquals(200, $this->client->response->status());
+        $this->assertEquals($this->app->config('version'), $this->client->response->body());
     }
 }
 

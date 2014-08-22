@@ -13,7 +13,7 @@ require_once PROJECT_ROOT . '/vendor/autoload.php';
 
 // Initialize our own copy of the slim application
 class LocalWebTestCase extends WebTestCase {
-    public function createApplication() {
+    public function getSlimInstance() {
       $app = new \Slim\Slim(array(
           'version'        => '0.0.0',
           'debug'          => false,

@@ -34,11 +34,11 @@ version from the application config. We're asserting that Slim responded with a
 `200` and that the version matches what we expect.
 
 ```php
-class VersionTest extends Slim_Framework_TestCase {
+class VersionTest extends LocalWebTestCase {
     public function testVersion() {
-        $this->get('/version');
-        $this->assertEquals(200, $this->response->status());
-        $this->assertEquals($this->app->config('version'), $this->response->body());
+        $this->client->get('/version');
+        $this->assertEquals(200, $this->client->response->status());
+        $this->assertEquals($this->app->config('version'), $this->client->response->body());
     }
 }
 ```

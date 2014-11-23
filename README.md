@@ -24,7 +24,7 @@ This application demonstrates some techniques for integration and unit testing.
 With this approach, you'll be able to test your application without the need of
 Curl, webservers, or anything other than [PHPUnit][phpunit] installed on your
 system. This makes it easy to test your entire app in an automated way with
-[TravisCI][tci]. Check out the[.travis.yml][yml] file in this project for an
+[TravisCI][tci]. Check out the [.travis.yml][yml] file in this project for an
 example.
 
 ## Example
@@ -100,6 +100,17 @@ harness.
 You can read more about dependency injection in the [SlimDocs on DI][di], and
 more about mock objects in the [PHPUnit docs][php_mock].
 
+## Site Tooling
+
+I'd like to give a nod to [Pake][pake]. It's a flexible and powerful build tool
+written in PHP. If you've got lots of JavaScript, I might recommend 
+[Grunt][grunt] or [Gulp][gulp]. However, for APIs and other sites that need a
+build system - I highly recommend Pake. It's got enough tools to handle SSH
+deployments and other sophisticated build steps. In this project, it's used to
+setup the dev web server and handle some code sniffs. With the 
+[Pake CLI][pake-cli] tool you don't have to install it globally. I think
+it's a compelling an overlooked tool. [Go see it][pake]!
+
 ## Contributing
 
 Open an [issue][issues] for questions, comments, or suggestions. Pull requests
@@ -111,8 +122,9 @@ explanation of the benefits.
 
 | Author | Commits
 | --- | ---
-| Craig Davis | 58 |
+| Craig Davis | 63 |
 | Jeremy Kendall | 3 |
+| guillermo-fisher | 1 |
 
 ## Changelog
 
@@ -132,6 +144,10 @@ explanation of the benefits.
 Thanks must be given to [Nicholas Humfrey][njh] for his work in this
 [integration testing harness][njh_test].
 
+[grunt]: http://gruntjs.com/
+[gulp]: http://gulpjs.com/
+[pake]: https://github.com/indeyets/pake
+[pake-cli]: https://github.com/there4/pake-cli
 [bb]: http://backbonejs.org
 [bootstrap]: https://github.com/there4/slim-unit-testing-example/blob/master/tests/bootstrap.php
 [di]: http://docs.slimframework.com/#Dependency-Injection

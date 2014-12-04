@@ -20,7 +20,8 @@
     "require-dev": {
         "squizlabs/php_codesniffer": "1.*",
         "phpunit/phpunit": "3.7.*",
-        "indeyets/pake": "~1.99"
+        "indeyets/pake": "~1.99",
+        "codeclimate/php-test-reporter": "dev-master"
     },
     "autoload": {
         "psr-0": {"There4": "lib/"}

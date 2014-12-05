@@ -1,4 +1,4 @@
-Slim Unit Testing Example
+Slim Unit Testing Example [![Build Status](https://travis-ci.org/there4/slim-unit-testing-example.png?branch=master)](https://travis-ci.org/there4/slim-unit-testing-example)[![Code Climate](https://codeclimate.com/github/there4/slim-unit-testing-example/badges/gpa.svg)](https://codeclimate.com/github/there4/slim-unit-testing-example)
 ================================================================================
 > Integration and unit testing a Slim PHP application
 
@@ -6,8 +6,6 @@ This is a sample application to show an approach to integration and unit testing
 a [Slim][slim] application. To skip to the heart of this, go check out the
 [testing bootstrap][bootstrap]. It sets a mock environment and provides some
 helper methods for testing Slim routes.
-
-[![Build Status](https://travis-ci.org/there4/slim-unit-testing-example.png?branch=master)](https://travis-ci.org/there4/slim-unit-testing-example)
 
 ## About
 
@@ -103,11 +101,11 @@ more about mock objects in the [PHPUnit docs][php_mock].
 ## Site Tooling
 
 I'd like to give a nod to [Pake][pake]. It's a flexible and powerful build tool
-written in PHP. If you've got lots of JavaScript, I might recommend 
+written in PHP. If you've got lots of JavaScript, I might recommend
 [Grunt][grunt] or [Gulp][gulp]. However, for APIs and other sites that need a
 build system - I highly recommend Pake. It's got enough tools to handle SSH
 deployments and other sophisticated build steps. In this project, it's used to
-setup the dev web server and handle some code sniffs. With the 
+setup the dev web server and handle some code sniffs. With the
 [Pake CLI][pake-cli] tool you don't have to install it globally. I think
 it's a compelling an overlooked tool. [Go see it][pake]!
 

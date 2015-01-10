@@ -107,7 +107,7 @@ build system - I highly recommend Pake. It's got enough tools to handle SSH
 deployments and other sophisticated build steps. In this project, it's used to
 setup the dev web server and handle some code sniffs. With the
 [Pake CLI][pake-cli] tool you don't have to install it globally. I think
-it's a compelling an overlooked tool. [Go see it][pake]!
+it's a compelling and overlooked tool. [Go see it][pake]!
 
 ## Contributing
 

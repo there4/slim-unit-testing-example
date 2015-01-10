@@ -40,11 +40,13 @@ function run_contributors()
     $contributors = explode("\n", shell_exec("git shortlog -s -n"));
     $table        = "| Author | Commits\n| --- | ---\n";
     foreach ($contributors as $contributor) {
-      if (!trim($contributor)) { continue; }
-      $contributor = explode("\t", $contributor);
-      $table .= sprintf(
-        "| %s | %s |\n", trim($contributor[1]), trim($contributor[0])
-      );
+        if (!trim($contributor)) { continue; }
+        $contributor = explode("\t", $contributor);
+        $table .= sprintf(
+            "| %s | %s |\n",
+            trim($contributor[1]),
+            trim($contributor[0])
+        );
     }
     $output = preg_replace(
         '/('.preg_quote($startPoint).')(.*)('.preg_quote($endPoint).')/si',

@@ -8,7 +8,6 @@ class ReferrerTest extends LocalWebTestCase
         $qs = array('');
         $referer = array('HTTP_REFERER' => 'hello');
         $this->client->get('/issue12', $qs, $referer);
-        print_r($this->client->app->request->headers);
         $this->assertEquals('hello', $this->client->response->body());
     }
 }

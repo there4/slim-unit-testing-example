@@ -149,5 +149,11 @@ $app->post('/issue3', function () use ($app) {
     $app->response->write($response);
 });
 
+$app->get('/issue12', function () use ($app) {
+    $referer = $app->request->headers('referer');
+    $response = $referer ? $referer : 'Missing referer header';
+    $app->response->write($response);
+});
+
 
 /* End of file app.php */

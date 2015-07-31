@@ -20,6 +20,9 @@ class LocalWebTestCase extends WebTestCase {
           'mode'           => 'testing',
           'templates.path' => __DIR__ . '/../app/templates'
       ));
+      
+      // Make this the instance returned by Slim::getInstance()
+      $app->setName('default');
 
       // Include our core application file
       require PROJECT_ROOT . '/app/app.php';

@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8449ecd6ff224291fa09c443f76c0405",
+    "hash": "e6c6acdbdc10acec96453a9c95339b66",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -851,16 +851,16 @@
         },
         {
             "name": "slim/slim",
-            "version": "2.4.3",
+            "version": "2.6.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/codeguy/Slim.git",
-                "reference": "4906b77a07c7bd6ff1a99aea903e940a2d4fa106"
+                "url": "https://github.com/slimphp/Slim.git",
+                "reference": "20a02782f76830b67ae56a5c08eb1f563c351a37"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeguy/Slim/zipball/4906b77a07c7bd6ff1a99aea903e940a2d4fa106",
-                "reference": "4906b77a07c7bd6ff1a99aea903e940a2d4fa106",
+                "url": "https://api.github.com/repos/slimphp/Slim/zipball/20a02782f76830b67ae56a5c08eb1f563c351a37",
+                "reference": "20a02782f76830b67ae56a5c08eb1f563c351a37",
                 "shasum": ""
             },
             "require": {
@@ -893,19 +893,19 @@
                 "rest",
                 "router"
             ],
-            "time": "2014-04-05 18:33:59"
+            "time": "2015-03-08 18:41:17"
         },
         {
             "name": "slim/views",
             "version": "0.1.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/codeguy/Slim-Views.git",
+                "url": "https://github.com/slimphp/Slim-Views.git",
                 "reference": "8561c785e55a39df6cb6f95c3aba3281a60ed5b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeguy/Slim-Views/zipball/8561c785e55a39df6cb6f95c3aba3281a60ed5b0",
+                "url": "https://api.github.com/repos/slimphp/Slim-Views/zipball/8561c785e55a39df6cb6f95c3aba3281a60ed5b0",
                 "reference": "8561c785e55a39df6cb6f95c3aba3281a60ed5b0",
                 "shasum": ""
             },
@@ -1001,17 +1001,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/there4/slim-test-helpers.git",
-                "reference": "2653b5fa95b01e92f0cd9b0f2febba602918b90c"
+                "reference": "0e4eb80dfb586c04a0259b37251b227ff1e0c379"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/there4/slim-test-helpers/zipball/2653b5fa95b01e92f0cd9b0f2febba602918b90c",
-                "reference": "2653b5fa95b01e92f0cd9b0f2febba602918b90c",
+                "url": "https://api.github.com/repos/there4/slim-test-helpers/zipball/0e4eb80dfb586c04a0259b37251b227ff1e0c379",
+                "reference": "0e4eb80dfb586c04a0259b37251b227ff1e0c379",
                 "shasum": ""
             },
             "require": {
                 "phpunit/phpunit": "4.*",
-                "slim/slim": "2.4.*"
+                "slim/slim": "2.6.*"
             },
             "require-dev": {
                 "squizlabs/php_codesniffer": "1.*"
@@ -1041,7 +1041,7 @@
             "keywords": [
                 "slim"
             ],
-            "time": "2014-11-22 23:51:47"
+            "time": "2015-08-25 14:55:27"
         },
         {
             "name": "twig/twig",
@@ -1104,7 +1104,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeclimate/php-test-reporter/zipball/2dd8395f81874333d15de3a598f722997ba42fb5",
+                "url": "https://api.github.com/repos/codeclimate/php-test-reporter/zipball/f7afa2f80e88faf722167488f47dea0ba6178a45",
                 "reference": "2dd8395f81874333d15de3a598f722997ba42fb5",
                 "shasum": ""
             },
@@ -1690,6 +1690,7 @@
         "codeclimate/php-test-reporter": 20
     },
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
 }

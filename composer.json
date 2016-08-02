@@ -14,7 +14,7 @@
         "shuber/curl": "dev-master",
         "slim/slim": "2.4.*",
         "slim/views": "0.1.*",
-        "there4/slim-test-helpers": "dev-master",
+        "there4/slim-test-helpers": "v0.9.6",
         "twig/twig": "1.15.0"
     },
     "require-dev": {
@@ -25,5 +25,10 @@
     },
     "autoload": {
         "psr-0": {"There4": "lib/"}
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit --verbose --coverage-text",
+        "sniff": "vendor/bin/phpcs --standard=PSR2 --extensions=php src tests",
+        "fix": "vendor/bin/phpcbf --standard=PSR2 --extensions=php controllers models routes src tests"
     }
 }

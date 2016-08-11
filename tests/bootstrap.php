@@ -14,16 +14,20 @@ require_once PROJECT_ROOT . '/vendor/autoload.php';
 // Initialize our own copy of the slim application
 class LocalWebTestCase extends WebTestCase {
     public function getSlimInstance() {
-      $app = new \Slim\Slim(array(
-          'version'        => '0.0.0',
-          'debug'          => false,
-          'mode'           => 'testing',
-          'templates.path' => __DIR__ . '/../app/templates'
-      ));
+        $app = new \Slim\Slim(array(
+            'version'        => '0.0.0',
+            'debug'          => false,
+            'mode'           => 'testing',
+            'templates.path' => __DIR__ . '/../app/templates'
+        ));
 
-      // Include our core application file
-      require PROJECT_ROOT . '/app/app.php';
-      return $app;
+        // force to overwrite the App singleton, so that \Slim\Slim::getInstance()
+        // returns the correct instance.
+        $app->setName('default');
+
+        // Include our core application file
+        require PROJECT_ROOT . '/app/app.php';
+        return $app;
     }
 };
 

@@ -12,7 +12,7 @@
     "require": {
         "indeyets/pake": "~1.99",
         "shuber/curl": "dev-master",
-        "slim/slim": "2.4.*",
+        "slim/slim": "2.6.*",
         "slim/views": "0.1.*",
         "there4/slim-test-helpers": "v0.9.6",
         "twig/twig": "1.15.0"

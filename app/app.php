@@ -155,5 +155,11 @@ $app->get('/issue12', function () use ($app) {
     $app->response->write($response);
 });
 
+// Options method support
+$app->options('/cors', function () use ($app) {
+    $app->response->setStatus(200);
+    $app->response->headers->set('Access-Control-Allow-Origin', '*');
+});
+
 
 /* End of file app.php */
